@@ -15,5 +15,10 @@ namespace Interaction
         {
             
         }
+
+        public string GetActionType()
+        {
+            return interactableSo.actionType.ToString();
+        }
     }
 }

@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fb9981763fe3482a9f153a930a698c9e, type: 3}
   m_Name: ColorCube
   m_EditorClassIdentifier: 
+  actionType: 1
   description: Change color
