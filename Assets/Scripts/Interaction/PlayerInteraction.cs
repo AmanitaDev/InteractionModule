@@ -1,11 +1,12 @@
 using System;
+using Inventory.Interfaces;
 using IPD;
+using Project.Inventory.Items;
 using StarterAssets;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
-using UnityEngine.Serialization;
 
 namespace Interaction
 {
@@ -13,6 +14,7 @@ namespace Interaction
     {
         public Camera mainCam;
         public float interactionDistance = 2f;
+        public LayerMask layerMask;
 
         public GameObject interactionUI;
         public TextMeshProUGUI interactionText;
@@ -27,16 +29,21 @@ namespace Interaction
 
         private InputDevice currentDevice = null;
 
-        private StarterAssetsInputs _input;
         private const string XELU_STYLE = "xelu";
         private const string JSTATZ_STYLE = "JStatz";
 
-        private Interactable interactable;
+        private IInteractable currentInteractable;
+        
+        // This enum is coming from the input system actions
+        [Serializable]
+        public enum ACTIONTYPE
+        {
+            Attack,
+            Interact
+        }
 
         private async void Awake()
         {
-            _input = GetComponent<StarterAssetsInputs>();
-            
             // Load input prompt data
             await InputPromptUtility.Load ( );
 
@@ -62,10 +69,9 @@ namespace Interaction
         /// <param name="value"></param>
         public void OnInteract(InputValue value)
         {
-            Debug.LogError("interact");
-            if (interactable == null) return;
+            if (currentInteractable == null) return;
             
-            interactable.Interact();
+            currentInteractable.OnInteraction();
         }
 
         private void Update()
@@ -75,22 +81,23 @@ namespace Interaction
 
         void InteractionRay()
         {
-            Ray ray = mainCam.ViewportPointToRay(Vector3.one / 2f);
+            Ray ray = mainCam.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
             RaycastHit hit;
 
             bool hitSomething = false;
+            Debug.DrawRay(ray.origin, ray.direction * 5f, Color.red);
 
-            if (Physics.Raycast(ray, out hit, interactionDistance))
+            if (Physics.Raycast(ray, out hit, interactionDistance, layerMask))
             {
-                interactable = hit.collider.GetComponent<Interactable>();
+                currentInteractable = hit.collider.GetComponent<IInteractable>();
 
-                if (interactable != null)
+                if (currentInteractable != null)
                 {
                     hitSomething = true;
-                    interactionText.text = interactable.GetDescription();
+                    interactionText.text = currentInteractable.GetInteractPrompt();// currentInteractable.GetDescription();
                     inputPromptImage.Initialize(new DisplaySettingsModel
                     {
-                        Action = interactable.GetActionType(),
+                        Action = ACTIONTYPE.Interact.ToString(),//currentInteractable.GetActionType(),
                         Style = XELU_STYLE
                     });
                 }

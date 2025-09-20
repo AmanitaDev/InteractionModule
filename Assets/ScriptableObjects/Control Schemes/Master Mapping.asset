@@ -32,6 +32,7 @@ MonoBehaviour:
       m_SubObjectGUID: 
       m_EditorAssetChanged: 0
   schemes:
+  - {fileID: 11400000, guid: 86d90f87c6e9f1747b45066ffc221bfb, type: 2}
   - {fileID: 11400000, guid: 06034d8d1f6e62b4e88f1edb9ac25d24, type: 2}
   - {fileID: 11400000, guid: 24c904c748068704c88e400c66259ea3, type: 2}
   - {fileID: 11400000, guid: 78ad49978b7d58b40820df1087249e2f, type: 2}
