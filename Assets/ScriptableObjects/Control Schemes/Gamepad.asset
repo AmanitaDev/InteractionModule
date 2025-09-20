@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3e71df7dce79b2c4f9d52b3f72ecb250, type: 3}
-  m_Name: Xbox Mapping
+  m_Name: Gamepad
   m_EditorClassIdentifier: 
-  scheme: xbox
+  scheme: Gamepad
   inputPrompts:
   - Path: <Gamepad>/buttonSouth
     Prompts:
