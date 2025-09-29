@@ -72,6 +72,7 @@ MonoBehaviour:
   quantityPerHit: 1
   capacity: 5
   hitParticle: {fileID: 7790427806062358285, guid: 410dbb61e2fa44f459c3038933bb8ce9, type: 3}
+  ToolToGather: 1
 --- !u!208 &8056547683576889899
 NavMeshObstacle:
   m_ObjectHideFlags: 0

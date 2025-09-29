@@ -1,4 +1,4 @@
-﻿using Inventory.Interfaces;
+﻿using Project.Inventory.Interfaces;
 using UnityEngine;
 
 namespace Project.Inventory.Items

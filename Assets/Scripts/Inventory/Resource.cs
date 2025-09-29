@@ -1,8 +1,8 @@
-﻿using Project.Inventory;
+﻿using Project.Equip;
 using Project.Inventory.Items;
 using UnityEngine;
 
-namespace Survival
+namespace Project.Inventory
 {
     public class Resource : MonoBehaviour
     {
@@ -10,10 +10,13 @@ namespace Survival
         public int quantityPerHit = 1;
         public int capacity;
         public GameObject hitParticle;
+        public EquipTool.TOOL ToolToGather;
 
         // called when the player hits the resource with an axe
-        public void Gather(Vector3 hitPoint, Vector3 hitNormal)
+        public void Gather(EquipTool.TOOL tool, Vector3 hitPoint, Vector3 hitNormal)
         {
+            if (ToolToGather != tool) return;
+            
             // give the player "quantityPerHit" of the resource
             for (int i = 0; i < quantityPerHit; i++)
             {

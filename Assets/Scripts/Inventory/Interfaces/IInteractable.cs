@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Inventory.Interfaces
+namespace Project.Inventory.Interfaces
 {
     public interface IInteractable
     {

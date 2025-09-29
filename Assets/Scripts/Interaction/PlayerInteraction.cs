@@ -1,14 +1,12 @@
 using System;
-using Inventory.Interfaces;
+using Project.Inventory.Interfaces;
 using IPD;
-using Project.Inventory.Items;
-using StarterAssets;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
 
-namespace Interaction
+namespace Project.Interaction
 {
     public class PlayerInteraction : MonoBehaviour
     {

@@ -17,9 +17,8 @@ MonoBehaviour:
   description: A common resource gathered from trees
   type: 0
   icon: {fileID: 21300000, guid: 5eda1ef35266d2b428f857c0e092ef3d, type: 3}
-  dropPrefab: {fileID: 6596456788150836961, guid: 3710215428f4bb841aeda412c33958eb,
-    type: 3}
+  dropPrefab: {fileID: 6596456788150836961, guid: 3710215428f4bb841aeda412c33958eb, type: 3}
   canStack: 1
   maxStackAmount: 12
   consumables: []
-  equipPrefab: {fileID: 0}
+  equipPrefab: {fileID: 398743095973387407, guid: 55a899bc4824ca749b9fd7cbf349e769, type: 3}

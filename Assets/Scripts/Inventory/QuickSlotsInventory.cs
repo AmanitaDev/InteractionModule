@@ -1,7 +1,7 @@
 ﻿using System;
+using Project.Equip;
 using Project.Inventory.Items;
 using Project.Inventory.UI;
-using Survival.Player;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
