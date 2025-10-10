@@ -34,6 +34,7 @@ namespace Project.Inventory
             // initialize the slots
             for (int x = 0; x < slots.Length; x++)
             {
+                
                 slots[x] = new ItemSlot();
                 uiSlots[x].index = x;
                 uiSlots[x].Clear();

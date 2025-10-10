@@ -1,3 +1,4 @@
+using Project.Interaction;
 using UnityEngine;
 
 namespace Project.Inventory.Interfaces

@@ -4,43 +4,48 @@ using UnityEngine;
 
 namespace Project.Equip
 {
-    public class EquipTool : Equip
+    [RequireComponent(typeof(Animator))]
+    public class EquipableTool : MonoBehaviour, IEquipable
     {
+        public IEquipable.EQUIPTYPE equipType;
+        
         public float attactRate = .15f;
         private bool attacking;
         public float attackDistance = 3;
 
         [Header("Resource Gathering")] public bool doesGatherResources;
-        public TOOL ToolType;
 
         [Header("Combat")] public bool doesDealDamage;
         public int damage = 10;
 
-        public enum TOOL
-        {
-            NULL,
-            AXE,
-            SHOVEL,
-        }
-
         //components
-        private Animator anim;
+        private Animator _animator;
         private Camera cam;
 
         private void Awake()
         {
             //get our components
-            anim = GetComponent<Animator>();
+            _animator = GetComponent<Animator>();
             cam = Camera.main;
         }
 
         // called when we press the attack input
-        public override void OnAttackInput()
+        public IEquipable.EQUIPTYPE GetEquipType()
+        {
+            return equipType;
+        }
+
+        public GameObject GetGameObject()
+        {
+            return gameObject;
+        }
+
+        public void OnAttackInput()
         {
             if (!attacking)
             {
                 attacking = true;
-                anim.SetTrigger("Attack");
+                _animator.SetTrigger("Attack");
                 Invoke(nameof(OnCanAttack), attactRate);
             }
         }
@@ -59,15 +64,10 @@ namespace Project.Equip
             RaycastHit hit;
             if (Physics.Raycast(ray, out hit, attackDistance))
             {
-                //did we hit a resource?
-                if (doesGatherResources && hit.collider.TryGetComponent(out Resource resource))
+                //did we hit a attackable?
+                if (hit.collider.TryGetComponent(out IAttackable attackable))
                 {
-                    resource.Gather(ToolType, hit.point, hit.normal);
-                }
-                // did we hit a damagable?
-                if(doesDealDamage && hit.collider.GetComponent<IDamagable>() != null)
-                {
-                    hit.collider.GetComponent<IDamagable>().TakePhysicalDamage(damage);
+                    attackable.OnAttack(GetEquipType(), hit.point, hit.normal);
                 }
             }
         }

@@ -9,12 +9,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 394668121679236154}
-  - component: {fileID: 394668122513269194}
   - component: {fileID: -810926315749183179}
-  m_Layer: 10
+  - component: {fileID: -1078262808727802207}
+  m_Layer: 0
   m_Name: Equip_Axe
   m_TagString: Untagged
-  m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -26,15 +26,33 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 394668121679236153}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.16, z: 0.04}
+  m_LocalRotation: {x: 0.22843897, y: -0.20921549, z: 0.015650088, w: 0.9506838}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7340021241908498845}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &394668122513269194
+--- !u!114 &-810926315749183179
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 394668121679236153}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 266d63a3fc69484da9abdd463919ac56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  equipType: 1
+  attactRate: 0.2
+  attackDistance: 3
+  doesGatherResources: 1
+  doesDealDamage: 0
+  damage: 0
+--- !u!95 &-1078262808727802207
 Animator:
   serializedVersion: 7
   m_ObjectHideFlags: 0
@@ -56,24 +74,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &-810926315749183179
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 394668121679236153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 266d63a3fc69484da9abdd463919ac56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attactRate: 0.2
-  attackDistance: 3
-  doesGatherResources: 1
-  ToolType: 1
-  doesDealDamage: 0
-  damage: 0
 --- !u!1001 &7085929212010985078
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -96,15 +96,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 81eb8c11aa55c6042a80fba68a915f4e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 81eb8c11aa55c6042a80fba68a915f4e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.214
+      value: 0.088
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 81eb8c11aa55c6042a80fba68a915f4e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -0.021
+      value: -0.006
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 81eb8c11aa55c6042a80fba68a915f4e, type: 3}
       propertyPath: m_LocalRotation.w

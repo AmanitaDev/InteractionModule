@@ -1,43 +1,59 @@
 ﻿using Project.Inventory.Items;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 namespace Project.Equip
 {
     public class EquipManager : MonoBehaviour
     {
-        public Equip curEquip;
+        [FormerlySerializedAs("curEquip")] public IEquipable curEquipable;
         public Transform equipParent;
 
         //singleton
         public static EquipManager instance;
+        //public Animator _animator;
 
         private void Awake()
         {
             instance = this;
         }
 
+        public IEquipable.EQUIPTYPE GetToolType()
+        {
+            if (curEquipable == null)
+            {
+                return IEquipable.EQUIPTYPE.NULL;
+            }
+            else
+            {
+                 return curEquipable.GetEquipType();
+            }
+        }
+
         void OnAttack(InputValue value)
         {
-            if (curEquip == null) return;
+            if (curEquipable == null) return;
                 
-            curEquip.OnAttackInput();
+            curEquipable.OnAttackInput();
+            //_animator.SetTrigger("OnHit");
+            //_animator.SetTrigger("OnDig");
         }
 
         // called when we equip an item
         public void EquipNew(ItemData item)
         {
             UnEquip();
-            curEquip = Instantiate(item.equipPrefab, equipParent).GetComponent<Equip>();
+            curEquipable = Instantiate(item.equipPrefab, equipParent).GetComponent<IEquipable>();
         }
 
         // called when we un-equip an item
         public void UnEquip()
         {
-            if(curEquip != null)
+            if(curEquipable != null)
             {
-                Destroy(curEquip.gameObject);
-                curEquip = null;
+                Destroy(curEquipable.GetGameObject());
+                curEquipable = null;
             }
         }
     }

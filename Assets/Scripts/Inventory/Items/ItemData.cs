@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using Project.Interaction;
+using UnityEngine;
 
 namespace Project.Inventory.Items
 {
@@ -38,6 +39,8 @@ namespace Project.Inventory.Items
 
         [Header("Equipable")] 
         public GameObject equipPrefab;
+
+        public PlayerInteraction.ACTIONTYPE actionType;
     }
 
     [System.Serializable]

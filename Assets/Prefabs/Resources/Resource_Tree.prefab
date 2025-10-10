@@ -68,11 +68,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36fa49bba9ca49c88229b7ac484f234e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemData: {fileID: 11400000, guid: ba8da35e90081f64b940957b3e350335, type: 2}
   itemToGive: {fileID: 11400000, guid: 7f540fd1063650349910848cec957f91, type: 2}
   quantityPerHit: 1
   capacity: 5
   hitParticle: {fileID: 7790427806062358285, guid: 410dbb61e2fa44f459c3038933bb8ce9, type: 3}
-  ToolToGather: 1
+  equipTypeToGather: 1
 --- !u!208 &8056547683576889899
 NavMeshObstacle:
   m_ObjectHideFlags: 0

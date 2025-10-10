@@ -31,6 +31,7 @@ namespace Project.Interaction
         private const string JSTATZ_STYLE = "JStatz";
 
         private IInteractable currentInteractable;
+        private IAttackable currentAttackable;
         
         // This enum is coming from the input system actions
         [Serializable]
@@ -72,7 +73,7 @@ namespace Project.Interaction
             currentInteractable.OnInteraction();
         }
 
-        private void Update()
+        private void FixedUpdate()
         {
             InteractionRay();
         }
@@ -88,17 +89,33 @@ namespace Project.Interaction
             if (Physics.Raycast(ray, out hit, interactionDistance, layerMask))
             {
                 currentInteractable = hit.collider.GetComponent<IInteractable>();
+                currentAttackable = hit.collider.GetComponent<IAttackable>();
 
                 if (currentInteractable != null)
                 {
                     hitSomething = true;
-                    interactionText.text = currentInteractable.GetInteractPrompt();// currentInteractable.GetDescription();
+                    interactionText.text = currentInteractable.GetInteractPrompt();
                     inputPromptImage.Initialize(new DisplaySettingsModel
                     {
-                        Action = ACTIONTYPE.Interact.ToString(),//currentInteractable.GetActionType(),
+                        Action = ACTIONTYPE.Interact.ToString(),
                         Style = XELU_STYLE
                     });
                 }
+                if (currentAttackable != null)
+                {
+                    hitSomething = true;
+                    interactionText.text = currentAttackable.GetInteractPrompt();
+                    inputPromptImage.Initialize(new DisplaySettingsModel
+                    {
+                        Action = ACTIONTYPE.Attack.ToString(),
+                        Style = XELU_STYLE
+                    });
+                }
+            }
+            else
+            {
+                currentInteractable = null;
+                currentAttackable = null;
             }
 
             interactionUI.SetActive(hitSomething);

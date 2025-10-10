@@ -1,20 +1,21 @@
-﻿using Project.Inventory.Interfaces;
+﻿using Project.Interaction;
+using Project.Inventory.Interfaces;
 using UnityEngine;
 
 namespace Project.Inventory.Items
 {
     public class ItemObject : MonoBehaviour, IInteractable
     {
-        public ItemData item;
+        public ItemData itemData;
         
         public string GetInteractPrompt()
         {
-            return string.Format("Pickup {0}", item.displayName);
+            return $"Pickup {itemData.displayName}";
         }
 
         public void OnInteraction()
         {
-            QuickSlotsInventory.instance.AddItem(item);
+            QuickSlotsInventory.instance.AddItem(itemData);
             Destroy(gameObject);
         }
     }
